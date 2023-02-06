@@ -1,126 +1,80 @@
 package org.example;
 
-import com.opencsv.CSVReader;
-import org.apache.spark.api.java.function.ForeachFunction;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SaveMode;
-import org.apache.spark.sql.SparkSession;
+//import com.opencsv.CSVReader;
+//import org.apache.spark.api.java.JavaRDD;
+//import org.apache.spark.api.java.JavaSparkContext;
+//import org.apache.spark.api.java.function.ForeachFunction;
+//import org.apache.spark.api.java.function.Function;
+import org.apache.spark.sql.*;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+//import java.io.*;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.List;
 import java.util.Scanner;
 
-public class SparkProject {
-    private static void parseData(String str) {
-        String acctFrom, acctTo, amount;
-        Scanner lineScanner = new Scanner(str);
-        lineScanner.useDelimiter("|");
-        while (lineScanner.hasNext()) {
-            acctFrom = lineScanner.next();
-            acctTo = lineScanner.next();
-            amount = lineScanner.next();
-            System.out.println("Account From- " + acctFrom + " Account To- " + acctTo +
-                    " Amount- " + amount);
-        }
-        lineScanner.close();
-    }
+//import com.mongodb.spark.MongoSpark;
+//import org.apache.spark.sql.SparkSession;
+//import org.bson.Document;
+//import static java.util.Arrays.asList;
 
+
+public class SparkProject {
     public static void main(String[] args) {
-        Scanner sc = null;
         try {
 
-            String str = "\"Name\":\"jon\" \"location\":\"3333 abc street\" \"country\":\"usa\"";
+//============  Change Delimiter  =======================================
 
-// prepare String for CSV parsing
-            CSVReader reader = new CSVReader(new FileReader("E:\\SpringMongoDB\\SparkDemo2\\src\\main\\resources\\csvFile.csv"));
-            System.out.println(reader.getLinesRead());
-//                    CsvReader reader = CsvReader.parse(str.replaceAll("\" *: *\"", ":"));
-//                    reader.setDelimiter(' '); // use space a delimiter
-//                    reader.readRecord(); // read CSV record
-//                    for (int i=0; i<reader.getColumnCount(); i++) // loop thru columns
-//                        System.out.printf("Scol[%d]: [%s]%n", i, reader.get(i));
+            String from = "," , to = ",";
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("\nEnter Your Old delimiter:=>");
+            from = scanner.nextLine();
+            System.out.print("\nEnter Your New Delimiter:=>");
+            to =scanner.nextLine();
+            SparkSession sparkSession = SparkSession.builder().master("local").appName("SPARKDEMO").getOrCreate();
+            Dataset<Row> dataset = sparkSession.read()
+                    .option("delimiter",from)       // if this option isn't mention then it consider comma by default.
+                    .option("header",true)  // for header of col top
+                    .csv("E:/SpringMongoDB/SparkDemo2/src/main/resources/csvFile.csv");
+            dataset.show();
+            dataset.write().format("csv")
+                    .option("delimiter",to)
+                    .option("header", true).mode(SaveMode.Overwrite)
+                    .save("E:/SpringMongoDB/SparkDemo2/src/main/resources/Delimiter");
 
-//                    sc = new Scanner(new File("E:\\SpringMongoDB\\SparkDemo2\\src\\main\\resources\\csvFile.csv"));
-//                    System.out.println("enter");
-//                    // Check if there is another line of input
-//                    while(sc.hasNextLine()){
-//                        String str = sc.nextLine();
-//                        // parse each line using delimiter
-//                        parseData(str);
-//                    }
+//=================[ MongoDb ]==========================
 
-//                    FileInputStream fileInputStream=new FileInputStream("E:\\SpringMongoDB\\SparkDemo2\\src\\main\\resources\\csvFile.csv");
+//            SparkSession spark = SparkSession.builder()
+//                    .master("local")
+//                    .appName("MongoSparkConnectorIntro")
+//                    .config("spark.mongodb.input.uri", "mongodb+srv://vishalpasi:FbiA1ChEDTbvv6eL@cluster0.3xmrakz.mongodb.net/myCollection")
+//                    .config("spark.mongodb.output.uri", "mongodb+srv://vishalpasi:FbiA1ChEDTbvv6eL@cluster0.3xmrakz.mongodb.net/myCollection")
+//                    .getOrCreate();
+//            // Create a JavaSparkContext using the SparkSession's SparkContext object
+//            JavaSparkContext jsc = new JavaSparkContext(spark.sparkContext());
+//            // More application logic would go here...
 //
-//                    String s1=new String(fileInputStream.readAllBytes());
-//
-//                    String[] lineArray=s1.split("\n");
-//
-//                    List<String[]> separatedValues=new ArrayList<>();
-//
-//                    for (String line: lineArray) {
-//                        separatedValues.add(line.split("\\|"));
-//                        System.out.println(separatedValues+" iam s1");
-//
-//                    }
-//                    for (String[]  s: separatedValues) {
-//                        for (String s2:s ) {
-//                            System.out.print(s2+" ");
+//            // Create a RDD of 10 documents
+//            JavaRDD<Document> documents = jsc.parallelize(asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)).map
+//                    (new Function<Integer, Document>() {
+//                        public Document call(final Integer i) throws Exception {
+//                            return Document.parse("{test: " + i + "}");
 //                        }
-//                        System.out.println("");
-//                    }
-//                    fileInputStream.close();
-//
-//                } catch (IOException exp) {
-//                    // TODO Auto-generated catch block
-//                    exp.printStackTrace();
-//                }finally{
-//                    if(sc != null)
-//                        sc.close();
-//                }
-
-
-//            String fileLocation = "E:\\SpringMongoDB\\SparkDemo2\\src\\main\\resources\\csvFile.csv";
-//
-//            File file = new File(fileLocation);
-//
-//            Scanner scanner = new Scanner(file);
-//
-//            String newStr[] = scanner.nextLine().split(",");
-//
-//            String str ="";
-////            System.out.println(newStr);
-//            Dataset<Row> data;
-//
-//            for (int i =0;i<newStr.length;i++) {
-//
-//                str += newStr[i];
-//                if (i < newStr.length - 1)
-//                    str += '/';
-//            }
-//                System.out.println(str);
-//
-//            System.out.println(" hi"+scanner.nextLine());
-
-//            System.setProperty("hadoop.home.dir","C:\\hadoop" );
+//                    });
+//            /*Start Example: Save data from RDD to MongoDB*****************/
+//            MongoSpark.save(sparkDocuments, writeConfig);
+//            /*End Example**************************************************/
+//            jsc.close();
 
             // Reading csv file... type-1
+///===========================================================================================================================
 
 //        SparkSession sparkSession = SparkSession.builder().master("local").appName("SPARKDEMO").getOrCreate();
-////        String filePath = Main.class.getResource("csvFile.csv").getPath();
-//        Dataset<Row> dataset = sparkSession.sqlContext()
-//                .read()
-//                .format("com.databricks.spark.csv")
-//                .option("header",true)  // for header of col top
-//                .load("E:/SpringMongoDB/SparkDemo2/src/main/resources/csvFile.csv");
-//
-//        List<Row> list = dataset.collectAsList();
-//        dataset.foreach((ForeachFunction<Row>) row -> System.out.println(row));
-//            System.out.println(list);
-//            System.out.println(dataset);
-//        dataset.show(false);     // for showing full value in columns.....
+//            Dataset<Row> dataset = sparkSession
+//                    .read()
+//                    .option("header",true)  // for header of col top
+//                    .csv("E:/SpringMongoDB/SparkDemo2/src/main/resources/csvFile.csv");
+//            dataset.show(false);     // for showing full value in columns.....
 
             // type-2
 //            SparkSession spark = SparkSession.builder().appName("Simple Application").master("local").config("spark.driver.host", "localhost").getOrCreate();
@@ -135,15 +89,26 @@ public class SparkProject {
 //                    new UserModel("2", "vishal", "pasi", "vishal@gmail", "1234"),
 //                    new UserModel("3", "vishal", "pasi", "vishal@gmail", "1234")
 //            ), UserModel.class);
+//
 //            data.show();
-//            data.write().format("csv").option("header", true).mode(SaveMode.Overwrite).save("E:/SpringMongoDB/SparkDemo2/src/main/resources/User");
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+//            data.write().format("csv").option("delimiter","=").option("header", true).mode(SaveMode.Overwrite).save("E:/SpringMongoDB/SparkDemo2/src/main/resources/User");
 
+            // updating....
+///===========================================================================================================================
+//            SparkSession spark = SparkSession.builder().appName("Simple Application")
+//                    .master("local").config("spark.driver.host", "localhost").getOrCreate();
+//            Dataset<Row> csv1 = spark.read().option("header",true).csv("E:/SpringMongoDB/SparkDemo2/src/main/resources/csvFile.csv");
+//            csv1.show();
+//            csv1 = csv1.withColumn("Location",
+//                    functions.when(csv1.col("Location").equalTo("Location"),"UK").otherwise(csv1.col("Location")));
+//            csv1.show();
+//            csv1.write().csv("E:/SpringMongoDB/SparkDemo2/src/main/resources/csvFile.csv");
+
+///===========================================================================================================================
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
