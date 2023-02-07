@@ -5,19 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ac5dbb4-0a7a-46cc-9eb3-a6c11ffe8ab1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SparkProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SparkProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SparkProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Delimiter/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Delimiter/.part-00000-acd68e41-11c9-4205-869c-fc9750ae0dc4-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Delimiter/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Delimiter/part-00000-acd68e41-11c9-4205-869c-fc9750ae0dc4-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User/.part-00000-b30374fd-b744-4c6b-9024-8a8434f68c1e-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User/part-00000-b30374fd-b744-4c6b-9024-8a8434f68c1e-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User1/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User1/.part-00000-534f5203-955b-42af-8cbb-84a50d2f0255-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User1/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User1/part-00000-534f5203-955b-42af-8cbb-84a50d2f0255-c000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User2/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User2/.part-00000-111a5d67-9ca5-4649-af40-c551ab8cb381-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User2/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/User2/part-00000-111a5d67-9ca5-4649-af40-c551ab8cb381-c000.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +34,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,10 +59,26 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "E:/SpringMongoDB/SparkDemo2"
+    "last_opened_file_path": "E:/SpringMongoDB/SparkDemo2",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.DelimiterManipulation">
+    <configuration name="DelimiterManipulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.DelimiterManipulation" />
+      <module name="SparkDemo2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SparkProject" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.SparkProject" />
       <module name="SparkDemo2.main" />
@@ -63,8 +92,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SparkToMongoDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.SparkToMongoDB" />
+      <module name="SparkDemo2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DelimiterManipulation" />
+        <item itemvalue="Application.SparkToMongoDB" />
         <item itemvalue="Application.SparkProject" />
       </list>
     </recent_temporary>
